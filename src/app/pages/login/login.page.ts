@@ -4,13 +4,10 @@ import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angula
 import {
   IonButton,
   IonContent,
-  IonHeader,
   IonInput,
   IonItem,
   IonLabel,
   IonNote,
-  IonTitle,
-  IonToolbar
 } from '@ionic/angular/standalone';
 import {Router, RouterLink} from "@angular/router";
 
@@ -21,9 +18,6 @@ import {Router, RouterLink} from "@angular/router";
   standalone: true,
   imports: [
     IonContent,
-    IonHeader,
-    IonTitle,
-    IonToolbar,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
