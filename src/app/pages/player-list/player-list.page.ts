@@ -1,20 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import {IonContent, IonHeader, IonItem, IonLabel, IonList, IonTitle, IonToolbar} from '@ionic/angular/standalone';
+import { ApiService} from "../../services/api.service";
+import {Player} from "../../models/player";
 
 @Component({
   selector: 'app-player-list',
   templateUrl: './player-list.page.html',
   styleUrls: ['./player-list.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonList, IonLabel, IonItem]
 })
 export class PlayerListPage implements OnInit {
+  players: Player[] = [];
 
-  constructor() { }
+  constructor(private nbaService: ApiService) { }
 
   ngOnInit() {
+    this.nbaService.getPlayers().subscribe((res) => {
+      this.players = res.data;
+    });
   }
-
 }
