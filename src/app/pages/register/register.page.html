@@ -1,13 +1,43 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>register</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="ion-padding register-page">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">register</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="register-container">
+
+    <h1 class="register-title">Register</h1>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
+      <ion-note color="danger" *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid">
+        Valid email required
+      </ion-note>
+
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <ion-note color="danger" *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid">
+        Min 6 characters
+      </ion-note>
+
+      <ion-item>
+        <ion-label position="floating">Repeat Password</ion-label>
+        <ion-input type="password" formControlName="repeatPassword"></ion-input>
+      </ion-item>
+      <ion-note color="danger" *ngIf="registerForm.hasError('mismatch') && registerForm.get('repeatPassword')?.touched">
+        Passwords do not match
+      </ion-note>
+
+      <ion-button expand="block" type="submit" class="ion-margin-top">Register</ion-button>
+      <ion-button fill="clear" routerLink="/login" expand="block" class="ion-margin-top">Already have an account?
+        Login
+      </ion-button>
+
+    </form>
+
+  </div>
+
 </ion-content>
+

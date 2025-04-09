@@ -1,17 +1,24 @@
-.login-page {
-  --background: #f3f4f6;
+// login.page.scss y register.page.scss
 
-  .login-container {
+:host {
+  --background: #f3f4f6;
+}
+
+.login-page,
+.register-page {
+  .login-container,
+  .register-container {
     max-width: 400px;
     margin: auto;
-    margin-top: 15vh;
+    margin-top: 12vh;
     padding: 2rem;
     background-color: white;
     border-radius: 16px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
   }
 
-  .login-title {
+  .login-title,
+  .register-title {
     text-align: center;
     font-size: 1.8rem;
     margin-bottom: 2rem;
