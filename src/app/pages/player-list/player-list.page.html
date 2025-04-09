@@ -6,7 +6,7 @@
 
 <ion-content class="ion-padding">
   <ion-list>
-    <ion-item *ngFor="let player of players">
+    <ion-item *ngFor="let player of players" (click)="goToPlayerDetail(player)">
       <ion-label>
         <h2>{{ player.first_name }} {{ player.last_name }}</h2>
         <p>Height: {{ player.height || 'N/A' }} - Weight: {{ player.weight || 'N/A' }}</p>
