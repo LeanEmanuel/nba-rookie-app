@@ -8,11 +8,11 @@ import {provideHttpClient} from "@angular/common/http";
 import {addIcons} from "ionicons";
 import {basketballOutline, homeOutline, shareOutline, starOutline} from "ionicons/icons";
 import {provideFirebaseApp} from "@angular/fire/app";
-import firebase from "firebase/compat";
-import initializeApp = firebase.initializeApp;
-import {environment} from "./environments/environment";
+import { initializeApp } from 'firebase/app';
 import {getAuth, provideAuth} from "@angular/fire/auth";
 import {getFirestore, provideFirestore} from "@angular/fire/firestore";
+import { firebaseConfig } from "./app/firebase-config"
+
 
 addIcons({
   homeOutline,
@@ -29,8 +29,8 @@ bootstrapApplication(AppComponent, {
     provideRouter(routes, withPreloading(PreloadAllModules)),
 
     // Firebase
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirebaseApp(() => initializeApp(firebaseConfig)),
     provideAuth(() => getAuth()),
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()),
   ],
 });

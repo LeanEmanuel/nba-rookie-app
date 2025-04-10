@@ -1,31 +1,41 @@
-import {Injectable} from '@angular/core';
-import {AngularFireAuth} from '@angular/fire/compat/auth';
-import {Observable, from} from 'rxjs';
-import firebase from 'firebase/compat';
+import {Injectable, inject} from '@angular/core';
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+  User
+} from 'firebase/auth';
+import {from, map, Observable} from 'rxjs';
+import { Auth } from '@angular/fire/auth';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
-  constructor(private afAuth: AngularFireAuth) {
+  private auth = inject(Auth);
+
+  register(email: string, password: string): Observable<User> {
+    return from(createUserWithEmailAndPassword(this.auth, email, password)).pipe(
+      map(cred => cred.user)
+    );
   }
 
-  register(email: string, password: string): Observable<firebase.auth.UserCredential> {
-    return from(this.afAuth.createUserWithEmailAndPassword(email, password));
-  }
-
-  login(email: string, password: string): Observable<firebase.auth.UserCredential> {
-    return from(this.afAuth.signInWithEmailAndPassword(email, password));
+  login(email: string, password: string): Observable<User> {
+    return from(signInWithEmailAndPassword(this.auth, email, password)).pipe(
+      map(cred => cred.user)
+    );
   }
 
   logout(): Observable<void> {
-    return new Observable(observer => {
-      this.afAuth.signOut().then(() => {
-        observer.next();
-        observer.complete();
-      }).catch(err => observer.error(err));
-    });
+    return from(signOut(this.auth));
   }
 
-  get currentUser$(): Observable<firebase.User | null> {
-    return this.afAuth.authState;
+  get currentUser(): User | null {
+    return this.auth.currentUser;
+  }
+
+  listenAuthChanges(): Observable<User | null> {
+    return new Observable((observer) => {
+      return onAuthStateChanged(this.auth, observer);
+    });
   }
 }
