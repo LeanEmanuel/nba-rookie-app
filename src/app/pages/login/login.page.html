@@ -2,7 +2,7 @@
 
   <div class="login-container">
 
-    <h1 class="login-title">NBA Rookie App</h1>
+    <h1 class="login-title">Login</h1>
 
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
 
@@ -21,6 +21,9 @@
       <ion-note color="danger" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
         Min 6 characters
       </ion-note>
+
+      <!-- Se muestra el error general si ocurre -->
+      <ion-note color="danger" *ngIf="errorMessage">{{ errorMessage }}</ion-note>
 
       <ion-button expand="block" type="submit" class="ion-margin-top">Login</ion-button>
 

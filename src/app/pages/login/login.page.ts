@@ -10,6 +10,7 @@ import {
   IonNote,
 } from '@ionic/angular/standalone';
 import {Router, RouterLink} from "@angular/router";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -31,20 +32,34 @@ import {Router, RouterLink} from "@angular/router";
 
 export class LoginPage {
 
-
   loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(6)]]
   });
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  errorMessage: string = '';
+
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private authService: AuthService) {
   }
 
   onLogin() {
-    if (this.loginForm.valid) {
-      this.router.navigateByUrl('/player-list');
-    } else {
+    if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
+      return;
     }
+    const {email, password} = this.loginForm.value;
+    this.authService.login(email!, password!).subscribe({
+      next: (userCredential) => {
+        console.log('Usuario logueado:', userCredential.uid);
+        this.router.navigate(['/player-list']);
+      },
+      error: (err) => {
+        console.error('Error al iniciar sesión:', err.message);
+        this.errorMessage = err.message;
+      }
+    });
   }
 }
