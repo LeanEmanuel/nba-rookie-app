@@ -2,8 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {
+  IonButton,
   IonContent,
-  IonHeader,
+  IonHeader, IonIcon,
   IonInfiniteScroll, IonInfiniteScrollContent,
   IonItem,
   IonLabel,
@@ -16,13 +17,14 @@ import {Player} from "../../models/player";
 import {PlayerStateService} from '../../services/player-state.service';
 import {Router} from "@angular/router";
 import {TopAppBarComponent} from "../../components/top-app-bar/top-app-bar.component";
+import {BottomNavBarComponent} from "../../components/bottom-nav-bar/bottom-nav-bar.component";
 
 @Component({
   selector: 'app-player-list',
   templateUrl: './player-list.page.html',
   styleUrls: ['./player-list.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonList, IonLabel, IonItem, TopAppBarComponent, IonInfiniteScroll, IonInfiniteScrollContent]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonList, IonLabel, IonItem, IonInfiniteScroll, IonInfiniteScrollContent, IonButton, IonIcon, BottomNavBarComponent]
 })
 export class PlayerListPage implements OnInit {
   players: Player[] = [];
@@ -57,5 +59,10 @@ export class PlayerListPage implements OnInit {
   goToPlayerDetail(player: Player) {
     this.playerState.setSelectedPlayer(player);
     this.router.navigate(['/player-detail']);
+  }
+
+  sharePlayer(player: Player) {
+    console.log(`Compartiendo a ${player.first_name} ${player.last_name}`);
+    // Aquí se implementará la funcionalidad nativa más adelante
   }
 }
