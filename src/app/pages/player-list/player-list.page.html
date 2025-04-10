@@ -14,4 +14,9 @@
       </ion-label>
     </ion-item>
   </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="loadPlayers($event)">
+    <ion-infinite-scroll-content loadingSpinner="dots" loadingText="Loading more players...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

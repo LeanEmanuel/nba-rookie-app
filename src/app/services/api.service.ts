@@ -10,8 +10,8 @@ export class ApiService {
   constructor(private http: HttpClient) {
   }
 
-  getPlayers(): Observable<ApiResponse> {
-    return this.http.get<ApiResponse>(this.baseUrl, {
+  getPlayers(page: number = 1): Observable<ApiResponse> {
+    return this.http.get<ApiResponse>(`${this.baseUrl}?page=${page}&per_page=25`, {
       headers: {
         'Authorization': '1e94dc0c-1e68-43ed-9d8f-9cf9bc13f532'
       }

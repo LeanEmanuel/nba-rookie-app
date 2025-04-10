@@ -1,7 +1,16 @@
 import {Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
-import {IonContent, IonHeader, IonItem, IonLabel, IonList, IonTitle, IonToolbar} from '@ionic/angular/standalone';
+import {
+  IonContent,
+  IonHeader,
+  IonInfiniteScroll, IonInfiniteScrollContent,
+  IonItem,
+  IonLabel,
+  IonList,
+  IonTitle,
+  IonToolbar
+} from '@ionic/angular/standalone';
 import {ApiService} from "../../services/api.service";
 import {Player} from "../../models/player";
 import {PlayerStateService} from '../../services/player-state.service';
@@ -13,10 +22,12 @@ import {TopAppBarComponent} from "../../components/top-app-bar/top-app-bar.compo
   templateUrl: './player-list.page.html',
   styleUrls: ['./player-list.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonList, IonLabel, IonItem, TopAppBarComponent]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonList, IonLabel, IonItem, TopAppBarComponent, IonInfiniteScroll, IonInfiniteScrollContent]
 })
 export class PlayerListPage implements OnInit {
   players: Player[] = [];
+  currentPage = 1;
+  isLoading = false;
 
   constructor(
     private nbaService: ApiService,
@@ -25,8 +36,21 @@ export class PlayerListPage implements OnInit {
   }
 
   ngOnInit() {
-    this.nbaService.getPlayers().subscribe((res) => {
-      this.players = res.data;
+    this.loadPlayers();
+  }
+
+  loadPlayers(event?: any) {
+    if (this.isLoading) return;
+    this.isLoading = true;
+
+    this.nbaService.getPlayers(this.currentPage).subscribe((res) => {
+      this.players.push(...res.data);
+      this.currentPage++;
+      this.isLoading = false;
+
+      if (event) {
+        event.target.complete();
+      }
     });
   }
 
