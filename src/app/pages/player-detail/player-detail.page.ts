@@ -13,6 +13,7 @@ import {PlayerStateService} from "../../services/player-state.service";
 import {Player} from "../../models/player";
 import {TopAppBarComponent} from "../../components/top-app-bar/top-app-bar.component";
 import {BottomNavBarComponent} from "../../components/bottom-nav-bar/bottom-nav-bar.component";
+import {PlayerStorageService} from "../../services/player-storage.service";
 
 @Component({
   selector: 'app-player-detail',
@@ -23,12 +24,32 @@ import {BottomNavBarComponent} from "../../components/bottom-nav-bar/bottom-nav-
 })
 export class PlayerDetailPage implements OnInit {
   player: Player | null = null;
+  isFavorite: boolean = false;
+  animating: boolean = false;
 
-  constructor(private playerState: PlayerStateService) {
+  constructor(
+    private playerState: PlayerStateService,
+    private playerStorage: PlayerStorageService
+  ) {
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.player = this.playerState.getSelectedPlayer();
+    if (this.player) {
+      this.isFavorite = await this.playerStorage.isFavorite(this.player.id);
+    }
+  }
+  async toggleFavorite() {
+    if (!this.player) return;
+
+    this.isFavorite = !this.isFavorite;
+    this.animating = true;
+
+    await this.playerStorage.toggleFavorite(this.player);
+
+    setTimeout(() => {
+      this.animating = false;
+    }, 400);
   }
 
   sharePlayer() {
