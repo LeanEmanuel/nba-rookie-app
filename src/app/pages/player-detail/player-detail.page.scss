@@ -22,4 +22,14 @@
       color: var(--ion-color-primary);
     }
   }
+  .star-icon.animate {
+    animation: bounce 0.4s;
+  }
+
+  @keyframes bounce {
+    0% { transform: scale(1); }
+    40% { transform: scale(1.4); }
+    60% { transform: scale(0.9); }
+    100% { transform: scale(1); }
+  }
 }
