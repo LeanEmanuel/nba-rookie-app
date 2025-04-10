@@ -6,13 +6,14 @@ import {ApiService} from "../../services/api.service";
 import {Player} from "../../models/player";
 import {PlayerStateService} from '../../services/player-state.service';
 import {Router} from "@angular/router";
+import {TopAppBarComponent} from "../../components/top-app-bar/top-app-bar.component";
 
 @Component({
   selector: 'app-player-list',
   templateUrl: './player-list.page.html',
   styleUrls: ['./player-list.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonList, IonLabel, IonItem]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonList, IonLabel, IonItem, TopAppBarComponent]
 })
 export class PlayerListPage implements OnInit {
   players: Player[] = [];
