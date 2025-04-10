@@ -1,5 +1,5 @@
-import { Component} from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {Component} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {
   IonButton,
@@ -25,12 +25,15 @@ export class RegisterPage {
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(6)]],
     repeatPassword: ['', [Validators.required]],
-  }, { validators: this.passwordsMatchValidator });
+  }, {validators: this.passwordsMatchValidator});
+
+  errorMessage: string = '';
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private authService: AuthService) { }
+    private authService: AuthService) {
+  }
 
   onRegister() {
     if (this.registerForm.invalid) {
@@ -38,7 +41,7 @@ export class RegisterPage {
       return;
     }
 
-    const { email, password, repeatPassword } = this.registerForm.value;
+    const {email, password, repeatPassword} = this.registerForm.value;
 
     if (password !== repeatPassword) {
       console.error('Passwords do not match');
@@ -51,8 +54,8 @@ export class RegisterPage {
         this.router.navigate(['/player-list']);
       },
       error: (err) => {
+        this.errorMessage = err.message;
         console.error('Error al registrar:', err.message);
-        //mostrar un ion-toast o mensaje en pantalla
       }
     });
   }
@@ -60,6 +63,6 @@ export class RegisterPage {
   private passwordsMatchValidator(form: any) {
     const pass = form.get('password')?.value;
     const repeat = form.get('repeatPassword')?.value;
-    return pass === repeat ? null : { mismatch: true };
+    return pass === repeat ? null : {mismatch: true};
   }
 }

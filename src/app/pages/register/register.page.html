@@ -30,6 +30,9 @@
         Passwords do not match
       </ion-note>
 
+      <!-- Mostrar mensaje de error general si ocurre un error en el registro -->
+      <ion-note color="danger" *ngIf="errorMessage">{{ errorMessage }}</ion-note>
+
       <ion-button expand="block" type="submit" class="ion-margin-top">Register</ion-button>
       <ion-button fill="clear" routerLink="/login" expand="block" class="ion-margin-top">Already have an account?
         Login
