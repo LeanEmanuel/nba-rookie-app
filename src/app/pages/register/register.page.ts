@@ -10,6 +10,7 @@ import {
   IonNote,
 } from '@ionic/angular/standalone';
 import {Router, RouterLink} from "@angular/router";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-register',
@@ -26,15 +27,34 @@ export class RegisterPage {
     repeatPassword: ['', [Validators.required]],
   }, { validators: this.passwordsMatchValidator });
 
-  constructor(private fb: FormBuilder, private router: Router) { }
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private authService: AuthService) { }
 
   onRegister() {
-    if (this.registerForm.valid) {
-      console.log('User registered:', this.registerForm.value);
-      this.router.navigateByUrl('/login');
-    } else {
+    if (this.registerForm.invalid) {
       this.registerForm.markAllAsTouched();
+      return;
     }
+
+    const { email, password, repeatPassword } = this.registerForm.value;
+
+    if (password !== repeatPassword) {
+      console.error('Passwords do not match');
+      return;
+    }
+
+    this.authService.register(email!, password!).subscribe({
+      next: (userCredential) => {
+        console.log('Usuario registrado:', userCredential.uid);
+        this.router.navigate(['/player-list']);
+      },
+      error: (err) => {
+        console.error('Error al registrar:', err.message);
+        //mostrar un ion-toast o mensaje en pantalla
+      }
+    });
   }
 
   private passwordsMatchValidator(form: any) {

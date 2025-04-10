@@ -1,14 +1,19 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Player Details</ion-title>
-  </ion-toolbar>
+    <app-top-app-bar [title]="'Player Details'"></app-top-app-bar>
 </ion-header>
 
 <ion-content class="ion-padding" *ngIf="player">
   <ion-card>
-    <ion-card-header>
-      <ion-card-title>{{ player.first_name }} {{ player.last_name }}</ion-card-title>
-      <ion-card-subtitle>{{ player.team?.full_name }}</ion-card-subtitle>
+    <ion-card-header class="header-with-icon">
+      <div class="header-top">
+        <div>
+          <ion-card-title>{{ player.first_name }} {{ player.last_name }}</ion-card-title>
+          <ion-card-subtitle>{{ player.team.full_name }}</ion-card-subtitle>
+        </div>
+        <ion-button fill="clear" size="small" (click)="sharePlayer()">
+          <ion-icon name="share-outline"></ion-icon>
+        </ion-button>
+      </div>
     </ion-card-header>
 
     <ion-card-content>
@@ -20,3 +25,4 @@
     </ion-card-content>
   </ion-card>
 </ion-content>
+<app-bottom-nav-bar></app-bottom-nav-bar>

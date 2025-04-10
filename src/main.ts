@@ -5,6 +5,21 @@ import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalo
 import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
 import {provideHttpClient} from "@angular/common/http";
+import {addIcons} from "ionicons";
+import {basketballOutline, homeOutline, shareOutline, starOutline} from "ionicons/icons";
+import {provideFirebaseApp} from "@angular/fire/app";
+import { initializeApp } from 'firebase/app';
+import {getAuth, provideAuth} from "@angular/fire/auth";
+import {getFirestore, provideFirestore} from "@angular/fire/firestore";
+import { firebaseConfig } from "./app/firebase-config"
+
+
+addIcons({
+  homeOutline,
+  basketballOutline,
+  starOutline,
+  shareOutline
+});
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -12,5 +27,10 @@ bootstrapApplication(AppComponent, {
     provideIonicAngular(),
     provideHttpClient(),
     provideRouter(routes, withPreloading(PreloadAllModules)),
+
+    // Firebase
+    provideFirebaseApp(() => initializeApp(firebaseConfig)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
   ],
 });
