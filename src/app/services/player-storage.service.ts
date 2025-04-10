@@ -8,6 +8,8 @@ import {
   deleteDoc,
   getDoc
 } from 'firebase/firestore';
+import {collection, getDocs, query} from "firebase/firestore";
+
 
 @Injectable({ providedIn: 'root' })
 export class PlayerStorageService {
@@ -44,5 +46,16 @@ export class PlayerStorageService {
     const playerRef = doc(this.db, `users/${uid}/favorites/${playerId}`);
     const snapshot = await getDoc(playerRef);
     return snapshot.exists();
+  }
+
+  async getFavorites(): Promise<Player[]> {
+    const uid = getAuth().currentUser?.uid;
+    if (!uid) return [];
+
+    const favoritesRef = collection(this.db, `users/${uid}/favorites`);
+    const q = query(favoritesRef);
+    const snapshot = await getDocs(q);
+
+    return snapshot.docs.map(doc => doc.data() as Player);
   }
 }
