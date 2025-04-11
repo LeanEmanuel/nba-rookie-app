@@ -1,7 +1,25 @@
-
 <ion-toolbar>
   <ion-buttons slot="start">
     <ion-back-button defaultHref="/player-list"></ion-back-button>
   </ion-buttons>
   <ion-title class="ion-text-center">{{ title }}</ion-title>
+  <ion-buttons slot="end">
+    <!-- Cámara -->
+    <ion-button (click)="onCameraClick()">
+      <ion-icon name="camera-outline"></ion-icon>
+    </ion-button>
+
+    <!-- Logout -->
+    <ion-button (click)="isAlertOpen = true">
+      <ion-icon name="log-out-outline"></ion-icon>
+    </ion-button>
+  </ion-buttons>
 </ion-toolbar>
+
+<ion-alert
+  [isOpen]="isAlertOpen"
+  header="Log out"
+  message="Are you sure you want to log out?"
+  (didDismiss)="isAlertOpen = false"
+  [buttons]="alertButtons"
+></ion-alert>

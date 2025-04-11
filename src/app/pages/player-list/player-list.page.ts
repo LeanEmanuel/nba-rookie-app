@@ -24,7 +24,7 @@ import {BottomNavBarComponent} from "../../components/bottom-nav-bar/bottom-nav-
   templateUrl: './player-list.page.html',
   styleUrls: ['./player-list.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonList, IonLabel, IonItem, IonInfiniteScroll, IonInfiniteScrollContent, IonButton, IonIcon, BottomNavBarComponent]
+  imports: [IonContent, IonHeader, CommonModule, FormsModule, IonList, IonLabel, IonItem, IonInfiniteScroll, IonInfiniteScrollContent, IonButton, IonIcon, BottomNavBarComponent, TopAppBarComponent]
 })
 export class PlayerListPage implements OnInit {
   players: Player[] = [];

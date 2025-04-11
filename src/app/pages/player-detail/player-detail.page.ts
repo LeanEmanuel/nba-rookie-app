@@ -33,6 +33,7 @@ export class PlayerDetailPage implements OnInit {
   ) {
   }
 
+
   async ngOnInit() {
     this.player = this.playerState.getSelectedPlayer();
     if (this.player) {
