@@ -6,24 +6,24 @@
   <ng-container *ngIf="favorites.length; else noFavorites">
     <ion-card *ngFor="let player of favorites">
       <ion-card-header class="header-with-icon">
-        <div class="header-top">
-          <div>
+        <div class="card-header-content">
+          <div class="player-info">
             <ion-card-title>{{ player.first_name }} {{ player.last_name }}</ion-card-title>
-            <ion-card-subtitle>{{ player.team.full_name }}</ion-card-subtitle>
+            <ion-card-subtitle>{{ player.team?.full_name || player.team || 'N/A' }}</ion-card-subtitle>
           </div>
-          <!-- Botón de compartir -->
-          <ion-button fill="clear" size="small">
-            <ion-icon name="share-outline"></ion-icon>
-          </ion-button>
-          <!-- Botón de favorito -->
-          <ion-button fill="clear" size="small" (click)="toggleFavorite(player)">
-            <ion-icon
-              name="star"
-              color="warning"
-              [ngClass]="{ 'animate': animatingId === player.id }"
-              class="star-icon">
-            </ion-icon>
-          </ion-button>
+          <div class="icon-actions">
+            <ion-button fill="clear" size="small" (click)="sharePlayer(player)">
+              <ion-icon name="share-outline"></ion-icon>
+            </ion-button>
+            <ion-button fill="clear" size="small" (click)="toggleFavorite(player)">
+              <ion-icon
+                name="star"
+                color="warning"
+                [ngClass]="{ 'animate': animatingId === player.id }"
+                class="star-icon"
+              ></ion-icon>
+            </ion-button>
+          </div>
         </div>
       </ion-card-header>
 

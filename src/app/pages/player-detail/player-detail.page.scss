@@ -1,35 +1,32 @@
-.header-with-icon {
+.card-header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  padding-right: 4px;
+}
+
+.player-info {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  flex: 1;
+}
 
-  .header-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-  }
+.icon-actions {
+  display: flex;
+  gap: 4px;
+  align-items: flex-start;
+  margin-left: 8px;
+}
 
-  ion-button {
-    --padding-start: 0;
-    --padding-end: 0;
-    margin: 0;
-    width: 40px;
-    height: 40px;
+/* Animación para la estrella */
+.star-icon.animate {
+  animation: bounce 0.4s;
+}
 
-    ion-icon {
-      font-size: 24px;
-      color: var(--ion-color-primary);
-    }
-  }
-  .star-icon.animate {
-    animation: bounce 0.4s;
-  }
-
-  @keyframes bounce {
-    0% { transform: scale(1); }
-    40% { transform: scale(1.4); }
-    60% { transform: scale(0.9); }
-    100% { transform: scale(1); }
-  }
+@keyframes bounce {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.4); }
+  60% { transform: scale(0.9); }
+  100% { transform: scale(1); }
 }
