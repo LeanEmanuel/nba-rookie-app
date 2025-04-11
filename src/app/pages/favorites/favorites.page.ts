@@ -21,16 +21,9 @@ export class FavoritesPage implements OnInit {
   constructor(
     private playerStorage: PlayerStorageService,
     private toastController: ToastController,
-    private alertCtrl: AlertController
   ) {}
 
   async ngOnInit() {
-    const alert = await this.alertCtrl.create({
-      header: 'Test',
-      message: 'Hello from Android',
-      buttons: ['OK']
-    });
-    await alert.present();
     this.favorites = await this.playerStorage.getFavorites();
   }
 
