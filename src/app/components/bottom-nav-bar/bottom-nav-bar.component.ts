@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {IonIcon, IonLabel, IonTabBar, IonTabButton} from "@ionic/angular/standalone";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
+import {getAuth, signOut} from "firebase/auth";
 
 @Component({
   selector: 'app-bottom-nav-bar',
@@ -14,4 +15,9 @@ import {RouterLink} from "@angular/router";
     IonLabel
   ]
 })
-export class BottomNavBarComponent { }
+export class BottomNavBarComponent {
+  @Input() title: string = '';
+
+  constructor(private router: Router) {
+  }
+}

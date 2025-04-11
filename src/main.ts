@@ -6,7 +6,7 @@ import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
 import {provideHttpClient} from "@angular/common/http";
 import {addIcons} from "ionicons";
-import {basketballOutline, homeOutline, shareOutline, starOutline} from "ionicons/icons";
+import {basketballOutline, cameraOutline, homeOutline, logOutOutline, shareOutline, starOutline} from "ionicons/icons";
 import {provideFirebaseApp} from "@angular/fire/app";
 import { initializeApp } from 'firebase/app';
 import {getAuth, provideAuth} from "@angular/fire/auth";
@@ -18,7 +18,9 @@ addIcons({
   homeOutline,
   basketballOutline,
   starOutline,
-  shareOutline
+  shareOutline,
+  logOutOutline,
+  cameraOutline
 });
 
 bootstrapApplication(AppComponent, {
