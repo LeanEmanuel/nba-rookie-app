@@ -1,0 +1,15 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Player Photo</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <ion-button expand="block" (click)="takePhoto()">
+      Take or Choose Photo
+    </ion-button>
+
+    <div *ngIf="imageDataUrl" class="photo-preview">
+      <img [ngSrc]="imageDataUrl" alt="Selected Photo" width="300" height="300" />
+    </div>
+  </ion-card-content>
+</ion-card>

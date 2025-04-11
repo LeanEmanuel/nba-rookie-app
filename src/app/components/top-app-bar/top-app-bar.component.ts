@@ -1,9 +1,20 @@
 import {Component, Input} from '@angular/core';
-import {IonAlert, IonBackButton, IonButton, IonButtons, IonIcon, IonTitle, IonToolbar} from "@ionic/angular/standalone";
-import {AlertController, ToastController} from "@ionic/angular";
+import {AlertController, IonAlert, ToastController} from "@ionic/angular";
 import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
 import {firstValueFrom} from "rxjs";
+import {
+  IonAlert,
+  IonBackButton,
+  IonButton,
+  IonButtons,
+  IonIcon,
+  IonImg,
+  IonTitle,
+  IonToolbar
+} from "@ionic/angular/standalone";
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-top-app-bar',
@@ -13,6 +24,10 @@ import {firstValueFrom} from "rxjs";
     IonToolbar,
     IonBackButton,
     IonTitle,
+    IonButtons,
+    IonButton,
+    IonIcon,
+    IonAlert,
     IonButtons,
     IonButton,
     IonIcon,
@@ -74,5 +89,21 @@ export class TopAppBarComponent {
   onCameraClick() {
     console.log('Camera icon clicked');
     // funcionalidad nativa más adelante
+  }
+  photoUrl: string | null = null;
+
+  async takePhoto() {
+    try {
+      const photo = await Camera.getPhoto({
+        resultType: CameraResultType.Uri,
+        source: CameraSource.Prompt,
+        quality: 90
+      });
+
+      this.photoUrl = photo.webPath!;
+      console.log('[DEBUG] Captured photo:', this.photoUrl);
+    } catch (error) {
+      console.error('[ERROR] Camera failed:', error);
+    }
   }
 }
