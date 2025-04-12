@@ -11,3 +11,6 @@ import { UserCameraComponent } from '../../components/user-camera/user-camera.co
   styleUrls: ['./photo.page.scss'],
 })
 export class PhotoPage {}
+// This page is responsible for rendering the camera component.
+// It does not contain additional logic, as all functionality
+// is encapsulated in the <app-user-camera> component.

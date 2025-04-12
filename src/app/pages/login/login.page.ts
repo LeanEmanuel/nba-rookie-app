@@ -45,6 +45,10 @@ export class LoginPage {
     private authService: AuthService) {
   }
 
+  /**
+   * Handles the login form submission.
+   * Validates form, calls auth service and navigates to home on success.
+   */
   onLogin() {
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
@@ -54,11 +58,11 @@ export class LoginPage {
 
     this.authService.login(email!, password!).subscribe({
       next: (userCredential) => {
-        console.log('Usuario logueado:', userCredential.uid);
+        console.log('User logged in:', userCredential.uid);
         this.router.navigateByUrl('/home', { replaceUrl: true });
       },
       error: (err) => {
-        console.error('Error al iniciar sesión:', err.message);
+        console.error('Login failed:', err.message);
         this.errorMessage = err.message;
       }
     });
