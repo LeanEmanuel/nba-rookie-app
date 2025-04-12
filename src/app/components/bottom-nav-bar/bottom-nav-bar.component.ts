@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {IonIcon, IonLabel, IonTabBar, IonTabButton} from "@ionic/angular/standalone";
-import {Router, RouterLink, RouterLinkActive} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {getAuth, signOut} from "firebase/auth";
 
 @Component({
@@ -12,8 +12,7 @@ import {getAuth, signOut} from "firebase/auth";
     IonTabButton,
     RouterLink,
     IonIcon,
-    IonLabel,
-    RouterLinkActive
+    IonLabel
   ]
 })
 export class BottomNavBarComponent {

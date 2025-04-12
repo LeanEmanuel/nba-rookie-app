@@ -3,8 +3,9 @@
 </ion-header>
 
 <ion-content *ngIf="player">
-  <ion-card>
-    <ion-card-header class="header-with-icon">
+  <div class="player-detail-container">
+  <ion-card class="animate-in">
+    <ion-card-header>
       <div class="card-header-content">
         <div class="player-info">
           <ion-card-title>{{ player.first_name }} {{ player.last_name }}</ion-card-title>
@@ -27,6 +28,11 @@
     </ion-card-header>
 
     <ion-card-content>
+      <!-- Avatar/Iniciales del jugador -->
+      <div class="player-avatar">
+        {{ player.first_name[0] }}{{ player.last_name[0] }}
+      </div>
+
       <p><strong>Position:</strong> {{ player.position || 'N/A' }}</p>
       <p><strong>Jersey Number:</strong> {{ player.jersey_number || 'N/A' }}</p>
       <p><strong>Height:</strong> {{ player.height || 'N/A' }}</p>
@@ -34,5 +40,6 @@
       <p><strong>Country:</strong> {{ player.country || 'N/A' }}</p>
     </ion-card-content>
   </ion-card>
+  </div>
 </ion-content>
 <app-bottom-nav-bar></app-bottom-nav-bar>

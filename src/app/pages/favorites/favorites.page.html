@@ -5,7 +5,7 @@
 <ion-content fullscreen="true">
   <ng-container *ngIf="favorites.length; else noFavorites">
     <ion-card *ngFor="let player of favorites">
-      <ion-card-header class="header-with-icon">
+      <ion-card-header>
         <div class="card-header-content">
           <div class="player-info">
             <ion-card-title>{{ player.first_name }} {{ player.last_name }}</ion-card-title>
@@ -28,6 +28,11 @@
       </ion-card-header>
 
       <ion-card-content>
+        <!-- Avatar/Iniciales del jugador -->
+        <div class="player-avatar">
+          {{ player.first_name[0] }}{{ player.last_name[0] }}
+        </div>
+
         <p><strong>Position:</strong> {{ player.position || 'N/A' }}</p>
         <p><strong>Jersey Number:</strong> {{ player.jersey_number || 'N/A' }}</p>
         <p><strong>Height:</strong> {{ player.height || 'N/A' }}</p>
@@ -38,7 +43,12 @@
   </ng-container>
 
   <ng-template #noFavorites>
-    <p>No favorites yet.</p>
+    <div class="empty-state">
+      <ion-icon name="star-outline"></ion-icon>
+      <h2>No Favorites Yet</h2>
+      <p>Add players to your favorites by tapping the star icon on any player's profile.</p>
+      <ion-button routerLink="/player-list">Browse Players</ion-button>
+    </div>
   </ng-template>
 </ion-content>
 

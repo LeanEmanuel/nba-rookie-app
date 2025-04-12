@@ -9,6 +9,7 @@
 }
 
 ion-spinner {
+  --color: var(--color-primary, #1a3a8f);
   transform: scale(1.5);
 }
 

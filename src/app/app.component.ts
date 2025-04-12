@@ -7,6 +7,7 @@ import {NgIf} from "@angular/common";
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
+  styleUrls: ['app.component.scss'],
   imports: [IonApp, IonRouterOutlet, IonContent, IonSpinner, NgIf,],
 })
 export class AppComponent {

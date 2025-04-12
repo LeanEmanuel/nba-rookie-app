@@ -13,7 +13,7 @@
       <ion-label>
         <h2>{{ player.first_name }} {{ player.last_name }}</h2>
         <p>
-          <span *ngIf="player.position">{{ player.position }} | </span>
+          <span *ngIf="player.position">Position: {{ player.position }} | </span>
           <span>Height: {{ player.height || 'N/A' }} - Weight: {{ player.weight || 'N/A' }}</span>
         </p>
         <p>{{ player.team.full_name }}</p>
