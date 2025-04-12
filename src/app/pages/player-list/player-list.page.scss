@@ -1,36 +1,64 @@
 ion-content {
-  --background: var(--color-background);
+  --background: var(--color-background, #f5f5f5);
 }
 
 ion-list {
   padding: 12px;
+  background: transparent;
 }
 
 ion-item {
+  --background: #ffffff;
   --border-style: none;
   --padding-start: 16px;
   --inner-padding-end: 12px;
   --border-radius: 12px;
   margin-bottom: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-  background: #fff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+
+  &:active {
+    --background: #f9f9f9;
+    transform: scale(0.98);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+  }
 }
 
-ion-label h2 {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--color-primary);
-  margin-bottom: 4px;
-}
+ion-label {
+  padding: 12px 0;
 
-ion-label p {
-  font-size: 14px;
-  color: #555;
-  margin: 0;
+  h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-primary, #1a3a8f);
+    margin-bottom: 6px;
+  }
+
+  p {
+    font-size: 14px;
+    color: #555;
+    margin: 4px 0;
+
+    &:last-child {
+      color: #1a3a8f;
+      font-weight: 500;
+    }
+  }
 }
 
 ion-button {
-  --color: var(--color-primary);
+  --color: var(--color-primary, #1a3a8f);
+  height: 100%;
+  margin: 0;
+
+  ion-icon {
+    font-size: 24px;
+  }
+
+  &::part(native) {
+    padding: 0 12px;
+  }
 }
 
 .spinner-center {
@@ -39,4 +67,53 @@ ion-button {
   align-items: center;
   height: 100%;
   width: 100%;
+
+  ion-spinner {
+    --color: var(--color-primary, #1a3a8f);
+    width: 48px;
+    height: 48px;
+  }
+}
+
+ion-infinite-scroll-content {
+  --color: var(--color-primary, #1a3a8f);
+  padding: 8px 0;
+
+  ion-spinner {
+    margin-right: 8px;
+  }
+}
+
+/* Añadir un indicador visual para mostrar que el elemento es clickeable */
+.player-item-container {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid #ccc;
+    border-right: 2px solid #ccc;
+    transform: translateY(-50%) rotate(45deg);
+  }
+}
+
+/* Estilo para el botón de compartir */
+.share-button {
+  z-index: 10;
+  position: relative;
+  margin-right: 8px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 25%;
+    height: 50%;
+    width: 1px;
+    background-color: #eee;
+  }
 }
