@@ -8,7 +8,7 @@ import {
   IonInfiniteScroll, IonInfiniteScrollContent,
   IonItem,
   IonLabel,
-  IonList,
+  IonList, IonSpinner,
 } from '@ionic/angular/standalone';
 import {ApiService} from "../../services/api.service";
 import {Player} from "../../models/player";
@@ -23,7 +23,7 @@ import {Share} from "@capacitor/share";
   templateUrl: './player-list.page.html',
   styleUrls: ['./player-list.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, CommonModule, FormsModule, IonList, IonLabel, IonItem, IonInfiniteScroll, IonInfiniteScrollContent, IonButton, IonIcon, BottomNavBarComponent, TopAppBarComponent]
+  imports: [IonContent, IonHeader, CommonModule, FormsModule, IonList, IonLabel, IonItem, IonInfiniteScroll, IonInfiniteScrollContent, IonButton, IonIcon, BottomNavBarComponent, TopAppBarComponent, IonSpinner]
 })
 export class PlayerListPage implements OnInit {
   players: Player[] = [];

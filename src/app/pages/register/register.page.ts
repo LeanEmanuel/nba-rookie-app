@@ -51,7 +51,7 @@ export class RegisterPage {
     this.authService.register(email!, password!).subscribe({
       next: (userCredential) => {
         console.log('Usuario registrado:', userCredential.uid);
-        this.router.navigate(['/player-list']);
+        this.router.navigateByUrl('/home', { replaceUrl: true });
       },
       error: (err) => {
         this.errorMessage = err.message;

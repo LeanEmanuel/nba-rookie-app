@@ -1,0 +1,42 @@
+ion-content {
+  --background: var(--color-background);
+}
+
+ion-list {
+  padding: 12px;
+}
+
+ion-item {
+  --border-style: none;
+  --padding-start: 16px;
+  --inner-padding-end: 12px;
+  --border-radius: 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  background: #fff;
+}
+
+ion-label h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 4px;
+}
+
+ion-label p {
+  font-size: 14px;
+  color: #555;
+  margin: 0;
+}
+
+ion-button {
+  --color: var(--color-primary);
+}
+
+.spinner-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}

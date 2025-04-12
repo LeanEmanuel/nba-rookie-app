@@ -1,13 +1,20 @@
 .login-page {
+  position: relative;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: var(--color-background);
+  padding: 16px;
 }
 
 .login-container {
-  max-width: 400px;
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+  margin: auto;
+  height: fit-content;
   width: 100%;
+  max-width: 400px;
   padding: 24px;
   background: #fff;
   border-radius: 16px;
@@ -15,8 +22,49 @@
 }
 
 .login-title {
-  font-size: 28px;
-  color: var(--color-primary);
   text-align: center;
+  font-size: 24px;
+  font-weight: 600;
   margin-bottom: 24px;
+  color: var(--color-primary);
 }
+
+ion-item {
+  --highlight-color-focused: var(--color-primary);
+  --border-color: var(--color-primary);
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+ion-input {
+  font-size: 16px;
+  --padding-start: 8px;
+}
+
+.login-btn {
+  margin-top: 16px;
+  font-weight: bold;
+  --background: var(--color-primary);
+  --border-radius: 8px;
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.register-link {
+  display: block;
+  text-align: center;
+  font-size: 13px;
+  margin-top: 12px;
+  color: var(--color-primary);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.error-msg {
+  color: red;
+  font-size: 13px;
+  margin-top: -12px;
+  margin-bottom: 12px;
+}
+

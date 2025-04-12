@@ -2,7 +2,7 @@
   <app-top-app-bar [title]="'Favorites'"></app-top-app-bar>
 </ion-header>
 
-<ion-content class="ion-padding" fullscreen="true">
+<ion-content fullscreen="true">
   <ng-container *ngIf="favorites.length; else noFavorites">
     <ion-card *ngFor="let player of favorites">
       <ion-card-header class="header-with-icon">
