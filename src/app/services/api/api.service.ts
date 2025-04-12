@@ -10,6 +10,10 @@ export class ApiService {
   constructor(private http: HttpClient) {
   }
 
+  /**
+   * Fetches a paginated list of NBA players.
+   * @param page - The page number to fetch.
+   */
   getPlayers(page: number = 1): Observable<ApiResponse> {
     return this.http.get<ApiResponse>(`${this.baseUrl}?page=${page}&per_page=25`, {
       headers: {

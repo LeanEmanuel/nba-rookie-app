@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { Player } from '../../models/player';
-import { getAuth } from 'firebase/auth';
+import {Injectable} from '@angular/core';
+import {Player} from '../../models/player';
+import {getAuth} from 'firebase/auth';
 import {
   getFirestore,
   doc,
@@ -11,13 +11,16 @@ import {
 import {collection, getDocs, query} from "firebase/firestore";
 
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class PlayerStorageService {
   private db = getFirestore();
 
+  /**
+   * Adds or removes a player from the user's favorites.
+   */
   async toggleFavorite(player: Player): Promise<void> {
     const uid = getAuth().currentUser?.uid;
-    if (!uid) throw new Error('Usuario no autenticado');
+    if (!uid) throw new Error('User not authenticated');
 
     const playerRef = doc(this.db, `users/${uid}/favorites/${player.id}`);
     const snapshot = await getDoc(playerRef);
@@ -39,6 +42,9 @@ export class PlayerStorageService {
     }
   }
 
+  /**
+   * Checks if a player is in the user's favorites.
+   */
   async isFavorite(playerId: number): Promise<boolean> {
     const uid = getAuth().currentUser?.uid;
     if (!uid) return false;
@@ -48,6 +54,9 @@ export class PlayerStorageService {
     return snapshot.exists();
   }
 
+  /**
+   * Retrieves all favorite players for the user.
+   */
   async getFavorites(): Promise<Player[]> {
     const uid = getAuth().currentUser?.uid;
     if (!uid) return [];
