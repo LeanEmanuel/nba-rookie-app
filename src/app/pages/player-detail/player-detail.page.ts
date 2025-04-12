@@ -34,7 +34,10 @@ export class PlayerDetailPage implements OnInit {
   ) {
   }
 
-
+  /**
+   * Loads the selected player from shared state.
+   * Checks if the player is marked as favorite.
+   */
   async ngOnInit() {
     this.player = this.playerState.getSelectedPlayer();
     if (this.player) {
@@ -42,6 +45,10 @@ export class PlayerDetailPage implements OnInit {
     }
   }
 
+  /**
+   * Toggles the favorite state of the player.
+   * Applies animation to the star icon.
+   */
   async toggleFavorite() {
     if (!this.player) return;
 
@@ -55,6 +62,9 @@ export class PlayerDetailPage implements OnInit {
     }, 400);
   }
 
+  /**
+   * Shares the player information using native Share plugin.
+   */
   async sharePlayer() {
     const canShare = await Share.canShare();
     console.log('[DEBUG] Can Share?', canShare.value);
