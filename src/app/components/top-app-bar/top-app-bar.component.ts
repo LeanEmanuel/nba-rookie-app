@@ -99,6 +99,6 @@ export class TopAppBarComponent {
    */
   onCameraClick() {
     console.log('Camera icon clicked');
-    this.router.navigate(['/photo']);
+    this.router.navigate(['/photo-screen']);
   }
 }

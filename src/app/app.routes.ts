@@ -28,11 +28,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/favorites/favorites.page').then( m => m.FavoritesPage)
   },
   {
-    path: 'photo',
-    loadComponent: () => import('./pages/photo/photo.page').then( m => m.PhotoPage)
-  },
-  {
     path: 'home',
     loadComponent: () => import('./pages/home/home.page').then( m => m.HomePage)
+  },
+  {
+    path: 'photo-screen',
+    loadComponent: () => import('./pages/photo-screen/photo-screen.page').then( m => m.PhotoScreenPage)
   },
 ];

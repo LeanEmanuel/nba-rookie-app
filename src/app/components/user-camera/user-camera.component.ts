@@ -2,16 +2,18 @@ import { Component } from '@angular/core';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { IonicModule } from '@ionic/angular';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
+import {BottomNavBarComponent} from "../bottom-nav-bar/bottom-nav-bar.component";
 
 @Component({
   selector: 'app-user-camera',
   standalone: true,
-  imports: [CommonModule, IonicModule, NgOptimizedImage],
+  imports: [CommonModule, IonicModule, NgOptimizedImage, BottomNavBarComponent],
   templateUrl: './user-camera.component.html',
   styleUrls: ['./user-camera.component.scss'],
 })
 export class UserCameraComponent {
   imageDataUrl: string | null = null;
+  isLoading = false
 
   /**
    * Prompts the user to take a photo or choose one from the gallery.
