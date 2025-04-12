@@ -1,16 +1,25 @@
-.header-with-icon {
+.card-header-content {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-}
-
-.header-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
+  padding-right: 4px;
 }
 
+.player-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.icon-actions {
+  display: flex;
+  gap: 4px;
+  align-items: flex-start;
+  margin-left: 8px;
+}
+
+/* Animación para la estrella */
 .star-icon.animate {
   animation: bounce 0.4s;
 }
@@ -21,3 +30,4 @@
   60% { transform: scale(0.9); }
   100% { transform: scale(1); }
 }
+

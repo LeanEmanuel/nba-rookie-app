@@ -14,6 +14,7 @@ import {Player} from "../../models/player";
 import {TopAppBarComponent} from "../../components/top-app-bar/top-app-bar.component";
 import {BottomNavBarComponent} from "../../components/bottom-nav-bar/bottom-nav-bar.component";
 import {PlayerStorageService} from "../../services/player-storage.service";
+import {Share} from "@capacitor/share";
 
 @Component({
   selector: 'app-player-detail',
@@ -40,6 +41,7 @@ export class PlayerDetailPage implements OnInit {
       this.isFavorite = await this.playerStorage.isFavorite(this.player.id);
     }
   }
+
   async toggleFavorite() {
     if (!this.player) return;
 
@@ -53,10 +55,20 @@ export class PlayerDetailPage implements OnInit {
     }, 400);
   }
 
-  sharePlayer() {
-    if (!this.player) return;
-    console.log(`Compartiendo a ${this.player.first_name} ${this.player.last_name}`);
-    // Aquí se implementará la funcionalidad nativa más adelante
+  async sharePlayer() {
+    const canShare = await Share.canShare();
+    console.log('[DEBUG] Can Share?', canShare.value);
+
+    if (!canShare.value) {
+      console.warn('Sharing is not supported in this environment');
+      return;
+    }
+
+    await Share.share({
+      title: 'Share Player',
+      text: `${this.player?.first_name} ${this.player?.last_name} - ${this.player?.team.full_name}`,
+      dialogTitle: 'Share this player'
+    });
   }
 
 }

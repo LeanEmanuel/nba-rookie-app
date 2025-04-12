@@ -5,24 +5,24 @@
 <ion-content class="ion-padding" *ngIf="player">
   <ion-card>
     <ion-card-header class="header-with-icon">
-      <div class="header-top">
-        <div>
+      <div class="card-header-content">
+        <div class="player-info">
           <ion-card-title>{{ player.first_name }} {{ player.last_name }}</ion-card-title>
-          <ion-card-subtitle>{{ player.team.full_name }}</ion-card-subtitle>
+          <ion-card-subtitle>{{ player.team?.full_name || player.team || 'N/A' }}</ion-card-subtitle>
         </div>
-        <!-- Botón de compartir -->
-        <ion-button fill="clear" size="small" (click)="sharePlayer()">
-          <ion-icon name="share-outline"></ion-icon>
-        </ion-button>
-        <!-- Botón de favorito -->
-        <ion-button fill="clear" size="small" (click)="toggleFavorite()">
-          <ion-icon
-            [name]="isFavorite ? 'star' : 'star-outline'"
-            [color]="isFavorite ? 'warning' : 'medium'"
-            [ngClass]="{ 'animate': animating }"
-            class="star-icon">
-          </ion-icon>
-        </ion-button>
+        <div class="icon-actions">
+          <ion-button fill="clear" size="small" (click)="sharePlayer()">
+            <ion-icon name="share-outline"></ion-icon>
+          </ion-button>
+          <ion-button fill="clear" size="small" (click)="toggleFavorite()">
+            <ion-icon
+              name="star"
+              color="warning"
+              [ngClass]="{ 'animate': animating }"
+              class="star-icon"
+            ></ion-icon>
+          </ion-button>
+        </div>
       </div>
     </ion-card-header>
 

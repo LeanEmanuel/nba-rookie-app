@@ -6,7 +6,15 @@ import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
 import {provideHttpClient} from "@angular/common/http";
 import {addIcons} from "ionicons";
-import {basketballOutline, cameraOutline, homeOutline, logOutOutline, shareOutline, starOutline} from "ionicons/icons";
+import {
+  basketballOutline,
+  cameraOutline,
+  homeOutline,
+  logOutOutline,
+  shareOutline,
+  star,
+  starOutline
+} from "ionicons/icons";
 import {provideFirebaseApp} from "@angular/fire/app";
 import { initializeApp } from 'firebase/app';
 import {getAuth, provideAuth} from "@angular/fire/auth";
@@ -18,6 +26,7 @@ addIcons({
   homeOutline,
   basketballOutline,
   starOutline,
+  star,
   shareOutline,
   logOutOutline,
   cameraOutline

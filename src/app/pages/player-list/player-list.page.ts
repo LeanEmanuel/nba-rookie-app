@@ -9,8 +9,6 @@ import {
   IonItem,
   IonLabel,
   IonList,
-  IonTitle,
-  IonToolbar
 } from '@ionic/angular/standalone';
 import {ApiService} from "../../services/api.service";
 import {Player} from "../../models/player";
@@ -18,6 +16,7 @@ import {PlayerStateService} from '../../services/player-state.service';
 import {Router} from "@angular/router";
 import {TopAppBarComponent} from "../../components/top-app-bar/top-app-bar.component";
 import {BottomNavBarComponent} from "../../components/bottom-nav-bar/bottom-nav-bar.component";
+import {Share} from "@capacitor/share";
 
 @Component({
   selector: 'app-player-list',
@@ -61,8 +60,14 @@ export class PlayerListPage implements OnInit {
     this.router.navigate(['/player-detail']);
   }
 
-  sharePlayer(player: Player) {
-    console.log(`Compartiendo a ${player.first_name} ${player.last_name}`);
-    // Aquí se implementará la funcionalidad nativa más adelante
+  async sharePlayer(player: Player) {
+    try {
+      await Share.share({
+        title: 'Share Player',
+        text: `${player.first_name} ${player.last_name} - ${player.team.full_name}`,
+      });
+    } catch (error) {
+      console.error('Share failed:', error);
+    }
   }
 }

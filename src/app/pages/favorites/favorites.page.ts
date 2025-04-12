@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {AlertController, IonicModule, ToastController} from '@ionic/angular';
+import { IonicModule, ToastController} from '@ionic/angular';
 import { PlayerStorageService } from '../../services/player-storage.service';
 import { Player } from '../../models/player';
 import { RouterModule } from '@angular/router';
 import {BottomNavBarComponent} from "../../components/bottom-nav-bar/bottom-nav-bar.component";
 import {TopAppBarComponent} from "../../components/top-app-bar/top-app-bar.component";
+import {Share} from "@capacitor/share";
 
 @Component({
   selector: 'app-favorites',
@@ -21,16 +22,9 @@ export class FavoritesPage implements OnInit {
   constructor(
     private playerStorage: PlayerStorageService,
     private toastController: ToastController,
-    private alertCtrl: AlertController
   ) {}
 
   async ngOnInit() {
-    const alert = await this.alertCtrl.create({
-      header: 'Test',
-      message: 'Hello from Android',
-      buttons: ['OK']
-    });
-    await alert.present();
     this.favorites = await this.playerStorage.getFavorites();
   }
 
@@ -54,6 +48,22 @@ export class FavoritesPage implements OnInit {
       color: 'primary'
     });
     await toast.present();
+  }
+
+  async sharePlayer(player: any) {
+    const canShare = await Share.canShare();
+    console.log('[DEBUG] Can Share?', canShare.value);
+
+    if (!canShare.value) {
+      console.warn('Sharing is not supported in this environment');
+      return;
+    }
+
+    await Share.share({
+      title: 'Share Player',
+      text: `${player.first_name} ${player.last_name} - ${player.team?.full_name || player.team}`,
+      dialogTitle: 'Share this player'
+    });
   }
 }
 
