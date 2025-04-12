@@ -1,4 +1,4 @@
-<ion-content class="ion-padding login-page">
+<ion-content class="login-page" fullscreen>
 
   <div class="login-container">
 
@@ -6,28 +6,32 @@
 
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
 
-      <ion-item>
-        <ion-label position="floating">Email</ion-label>
+      <!-- Email -->
+      <ion-item lines="full">
+        <ion-label position="stacked">Email</ion-label>
         <ion-input type="email" formControlName="email"></ion-input>
       </ion-item>
-      <ion-note color="danger" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid">
+
+      <ion-note class="error-msg" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid">
         Valid email required
       </ion-note>
 
-      <ion-item>
-        <ion-label position="floating">Password</ion-label>
+      <!-- Password -->
+      <ion-item lines="full">
+        <ion-label position="stacked">Password</ion-label>
         <ion-input type="password" formControlName="password"></ion-input>
       </ion-item>
-      <ion-note color="danger" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
+
+      <ion-note class="error-msg" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
         Min 6 characters
       </ion-note>
 
       <!-- Se muestra el error general si ocurre -->
       <ion-note color="danger" *ngIf="errorMessage">{{ errorMessage }}</ion-note>
 
-      <ion-button expand="block" type="submit" class="ion-margin-top">Login</ion-button>
+      <ion-button expand="block" type="submit" class="login-btn">Login</ion-button>
 
-      <ion-button fill="clear" routerLink="/register" class="ion-margin-top" expand="block">
+      <ion-button fill="clear" routerLink="/register" class="register-link">
         Don't have an account? Register
       </ion-button>
 
