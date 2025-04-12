@@ -28,7 +28,6 @@ import {NgClass, NgIf} from "@angular/common";
     IonIcon,
     IonAlert,
     NgIf,
-    NgClass,
   ]
 })
 export class TopAppBarComponent {

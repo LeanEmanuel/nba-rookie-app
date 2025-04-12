@@ -36,10 +36,19 @@ export class PlayerListPage implements OnInit {
     private router: Router) {
   }
 
+  /**
+   * Called on component initialization.
+   * Loads the first page of players.
+   */
   ngOnInit() {
     this.loadPlayers();
   }
 
+  /**
+   * Loads the next batch of players from the API.
+   * Prevents overlapping requests with `isLoading`.
+   * Supports infinite scroll event completion.
+   */
   loadPlayers(event?: any) {
     if (this.isLoading) return;
     this.isLoading = true;
@@ -55,11 +64,18 @@ export class PlayerListPage implements OnInit {
     });
   }
 
+  /**
+   * Navigates to the detail page of the selected player.
+   * Stores the player in a shared service.
+   */
   goToPlayerDetail(player: Player) {
     this.playerState.setSelectedPlayer(player);
     this.router.navigate(['/player-detail']);
   }
 
+  /**
+   * Shares the selected player via native sharing plugin.
+   */
   async sharePlayer(player: Player) {
     try {
       await Share.share({

@@ -35,6 +35,14 @@ export class RegisterPage {
     private authService: AuthService) {
   }
 
+  /**
+   * Handles user registration.
+   * - Validates form.
+   * - Compares password and repeatPassword.
+   * - Calls AuthService to register.
+   * - Redirects to /home on success.
+   * - Sets error message on failure.
+   */
   onRegister() {
     if (this.registerForm.invalid) {
       this.registerForm.markAllAsTouched();
@@ -50,16 +58,19 @@ export class RegisterPage {
 
     this.authService.register(email!, password!).subscribe({
       next: (userCredential) => {
-        console.log('Usuario registrado:', userCredential.uid);
-        this.router.navigateByUrl('/home', { replaceUrl: true });
+        console.log('User registered successfully:', userCredential.uid);
+        this.router.navigateByUrl('/home', {replaceUrl: true});
       },
       error: (err) => {
         this.errorMessage = err.message;
-        console.error('Error al registrar:', err.message);
+        console.error('Registration failed:', err.message);
       }
     });
   }
 
+  /**
+   * Custom validator to ensure both password fields match.
+   */
   private passwordsMatchValidator(form: any) {
     const pass = form.get('password')?.value;
     const repeat = form.get('repeatPassword')?.value;
