@@ -12,11 +12,11 @@
         </div>
         <div class="icon-actions">
           <ion-button fill="clear" size="small" (click)="sharePlayer()">
-            <ion-icon name="share-outline"></ion-icon>
+            <ion-icon name="share-social-outline"></ion-icon>
           </ion-button>
           <ion-button fill="clear" size="small" (click)="toggleFavorite()">
             <ion-icon
-              name="star"
+              [name]="isFavorite ? 'star' : 'star-outline'"
               color="warning"
               [ngClass]="{ 'animate': animating }"
               class="star-icon"

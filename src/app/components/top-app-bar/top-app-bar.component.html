@@ -1,7 +1,10 @@
-
 <ion-toolbar>
   <ion-buttons slot="start">
-    <ion-back-button defaultHref="/home"></ion-back-button>
+    <ion-back-button *ngIf="showBackButton" defaultHref="/home"></ion-back-button>
+    <!-- Espaciador invisible cuando no se muestra el botón de retroceso -->
+    <ion-button *ngIf="!showBackButton" fill="clear" style="opacity: 0; pointer-events: none; width: 32px;">
+      <ion-icon name="chevron-back"></ion-icon>
+    </ion-button>
   </ion-buttons>
   <ion-title class="ion-text-center">{{ title }}</ion-title>
   <ion-buttons slot="end">

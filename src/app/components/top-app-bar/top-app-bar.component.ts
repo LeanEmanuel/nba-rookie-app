@@ -12,6 +12,7 @@ import {
   IonTitle,
   IonToolbar
 } from "@ionic/angular/standalone";
+import {NgClass, NgIf} from "@angular/common";
 
 
 @Component({
@@ -26,11 +27,15 @@ import {
     IonButton,
     IonIcon,
     IonAlert,
+    NgIf,
+    NgClass,
   ]
 })
 export class TopAppBarComponent {
 
   @Input() title: string = '';
+  @Input() showBackButton = true
+
   isAlertOpen = false;
   alertButtons = [
     {

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {IonApp, IonContent, IonItem, IonLabel, IonRouterOutlet, IonSpinner, Platform} from '@ionic/angular/standalone';
+import {IonApp, IonContent, IonRouterOutlet, IonSpinner, Platform} from '@ionic/angular/standalone';
 import {Router} from "@angular/router";
 import {AuthService} from "./services/auth.service";
 import {NgIf} from "@angular/common";
@@ -7,7 +7,7 @@ import {NgIf} from "@angular/common";
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
-  imports: [IonApp, IonRouterOutlet, IonContent, IonSpinner, NgIf, IonItem, IonLabel],
+  imports: [IonApp, IonRouterOutlet, IonContent, IonSpinner, NgIf,],
 })
 export class AppComponent {
   loading: Boolean = true;
