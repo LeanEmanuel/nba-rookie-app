@@ -1,0 +1,30 @@
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-back-button *ngIf="showBackButton" defaultHref="/home"></ion-back-button>
+    <!-- Espaciador invisible cuando no se muestra el botón de retroceso -->
+    <ion-button *ngIf="!showBackButton" fill="clear" style="opacity: 0; pointer-events: none; width: 32px;">
+      <ion-icon name="chevron-back"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  <ion-title class="ion-text-center">{{ title }}</ion-title>
+  <ion-buttons slot="end">
+    <!-- Cámara -->
+    <ion-button (click)="onCameraClick()">
+      <ion-icon name="camera-outline"></ion-icon>
+    </ion-button>
+
+    <!-- Logout -->
+    <ion-button (click)="isAlertOpen = true">
+      <ion-icon name="log-out-outline"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>
+
+<ion-alert
+  [isOpen]="isAlertOpen"
+  header="Log out"
+  message="Are you sure you want to log out?"
+  (didDismiss)="isAlertOpen = false"
+  [buttons]="alertButtons"
+></ion-alert>
+

@@ -1,0 +1,68 @@
+.register-page {
+  position: relative;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-background);
+  padding: 16px;
+}
+
+.register-container {
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+  margin: auto;
+  height: fit-content;
+  width: 100%;
+  max-width: 400px;
+  padding: 24px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.register-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: var(--color-primary);
+}
+
+ion-item {
+  --highlight-color-focused: var(--color-primary);
+  --border-color: var(--color-primary);
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+ion-input {
+  font-size: 16px;
+  --padding-start: 8px;
+}
+
+.register-btn {
+  margin-top: 16px;
+  font-weight: bold;
+  --background: var(--color-primary);
+  --border-radius: 8px;
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.login-link-btn {
+  text-align: center;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  color: var(--color-primary);
+  font-weight: 500;
+  margin-top: 12px;
+}
+
+
+
+ion-note {
+  font-size: 13px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+

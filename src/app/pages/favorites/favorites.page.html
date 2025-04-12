@@ -1,0 +1,56 @@
+<ion-header [translucent]="true">
+  <app-top-app-bar [title]="'Favorites'"></app-top-app-bar>
+</ion-header>
+
+<ion-content fullscreen="true">
+  <ng-container *ngIf="favorites.length; else noFavorites">
+    <ion-card *ngFor="let player of favorites">
+      <ion-card-header>
+        <div class="card-header-content">
+          <div class="player-info">
+            <ion-card-title>{{ player.first_name }} {{ player.last_name }}</ion-card-title>
+            <ion-card-subtitle>{{ player.team.full_name || 'N/A' }}</ion-card-subtitle>
+          </div>
+          <div class="icon-actions">
+            <ion-button fill="clear" size="small" (click)="sharePlayer(player)">
+              <ion-icon name="share-social-outline"></ion-icon>
+            </ion-button>
+            <ion-button fill="clear" size="small" (click)="toggleFavorite(player)">
+              <ion-icon
+                name="star"
+                color="warning"
+                [ngClass]="{ 'animate': animatingId === player.id }"
+                class="star-icon"
+              ></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+      </ion-card-header>
+
+      <ion-card-content>
+        <!-- Avatar/Iniciales del jugador -->
+        <div class="player-avatar">
+          {{ player.first_name[0] }}{{ player.last_name[0] }}
+        </div>
+
+        <p><strong>Position:</strong> {{ player.position || 'N/A' }}</p>
+        <p><strong>Jersey Number:</strong> {{ player.jersey_number || 'N/A' }}</p>
+        <p><strong>Height:</strong> {{ player.height || 'N/A' }}</p>
+        <p><strong>Weight:</strong> {{ player.weight || 'N/A' }}</p>
+        <p><strong>Country:</strong> {{ player.country || 'N/A' }}</p>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+
+  <ng-template #noFavorites>
+    <div class="empty-state">
+      <ion-icon name="star-outline"></ion-icon>
+      <h2>No Favorites Yet</h2>
+      <p>Add players to your favorites by tapping the star icon on any player's profile.</p>
+      <ion-button routerLink="/player-list">Browse Players</ion-button>
+    </div>
+  </ng-template>
+</ion-content>
+
+<app-bottom-nav-bar></app-bottom-nav-bar>
+

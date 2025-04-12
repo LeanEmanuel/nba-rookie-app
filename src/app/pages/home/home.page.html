@@ -1,0 +1,12 @@
+<ion-header [translucent]="true">
+    <app-top-app-bar [title]="'NBA Rookie App'" [showBackButton]="false"></app-top-app-bar>
+</ion-header>
+<ion-content class="home-page" fullscreen>
+    <div class="home-container">
+        <h2 class="home-title">Welcome to NBA Rookie App</h2>
+
+        <ion-button expand="block" routerLink="/player-list">Player List</ion-button>
+        <ion-button expand="block" routerLink="/favorites">Favorites</ion-button>
+    </div>
+</ion-content>
+<app-bottom-nav-bar></app-bottom-nav-bar>

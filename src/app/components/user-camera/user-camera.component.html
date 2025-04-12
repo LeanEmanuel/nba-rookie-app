@@ -1,0 +1,25 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Player Photo</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <ion-button expand="block" (click)="takePhoto()" [disabled]="isLoading">
+      <ion-icon name="camera-outline" slot="start"></ion-icon>
+      Take or Choose Photo
+    </ion-button>
+
+    <div *ngIf="isLoading" class="loading-container">
+      <ion-spinner name="crescent"></ion-spinner>
+    </div>
+
+    <div *ngIf="imageDataUrl && !isLoading" class="photo-preview">
+      <img [ngSrc]="imageDataUrl" alt="Selected Photo" />
+    </div>
+
+    <div *ngIf="!imageDataUrl && !isLoading" class="empty-photo">
+      <ion-icon name="image-outline"></ion-icon>
+      <p>No photo selected</p>
+    </div>
+  </ion-card-content>
+</ion-card>

@@ -1,0 +1,16 @@
+<ion-tab-bar slot="bottom">
+  <ion-tab-button tab="home" [routerLink]="['/home']" routerLinkActive="tab-selected">
+    <ion-icon name="home-outline"></ion-icon>
+    <ion-label>Home</ion-label>
+  </ion-tab-button>
+
+  <ion-tab-button tab="players" [routerLink]="['/player-list']" routerLinkActive="tab-selected">
+    <ion-icon name="basketball-outline"></ion-icon>
+    <ion-label>Players</ion-label>
+  </ion-tab-button>
+
+  <ion-tab-button tab="favorites" [routerLink]="['/favorites']" routerLinkActive="tab-selected">
+    <ion-icon name="star-outline"></ion-icon>
+    <ion-label>Favorites</ion-label>
+  </ion-tab-button>
+</ion-tab-bar>

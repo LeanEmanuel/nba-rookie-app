@@ -1,0 +1,46 @@
+<ion-content class="register-page">
+
+  <div class="register-container">
+
+    <h2 class="register-title">Register</h2>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+
+      <ion-item>
+        <ion-label position="stacked">Email</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
+      <ion-note color="danger" *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid">
+        Valid email required
+      </ion-note>
+
+      <ion-item>
+        <ion-label position="stacked">Password</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <ion-note color="danger" *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid">
+        Min 6 characters
+      </ion-note>
+
+      <ion-item>
+        <ion-label position="stacked">Repeat Password</ion-label>
+        <ion-input type="password" formControlName="repeatPassword"></ion-input>
+      </ion-item>
+      <ion-note color="danger" *ngIf="registerForm.hasError('mismatch') && registerForm.get('repeatPassword')?.touched">
+        Passwords do not match!
+      </ion-note>
+
+      <!-- Mostrar mensaje de error general si ocurre un error en el registro -->
+      <ion-note color="danger" *ngIf="errorMessage">{{ errorMessage }}</ion-note>
+
+      <ion-button expand="block" type="submit" class="register-btn">Register</ion-button>
+      <ion-button fill="clear" routerLink="/login" expand="block" class="login-link-btn">
+        Already have an account? <strong>Login</strong>
+      </ion-button>
+
+    </form>
+
+  </div>
+
+</ion-content>
+
