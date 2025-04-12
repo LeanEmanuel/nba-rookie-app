@@ -54,7 +54,7 @@ export class LoginPage {
     this.authService.login(email!, password!).subscribe({
       next: (userCredential) => {
         console.log('Usuario logueado:', userCredential.uid);
-        this.router.navigate(['/player-list']);
+        this.router.navigate(['/home']);
       },
       error: (err) => {
         console.error('Error al iniciar sesión:', err.message);
