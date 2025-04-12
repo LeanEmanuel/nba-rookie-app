@@ -9,11 +9,11 @@ import {
   IonContent,
   IonHeader, IonIcon,
 } from '@ionic/angular/standalone';
-import {PlayerStateService} from "../../services/player-state.service";
+import {PlayerStateService} from "../../services/player/player-state.service";
 import {Player} from "../../models/player";
 import {TopAppBarComponent} from "../../components/top-app-bar/top-app-bar.component";
 import {BottomNavBarComponent} from "../../components/bottom-nav-bar/bottom-nav-bar.component";
-import {PlayerStorageService} from "../../services/player-storage.service";
+import {PlayerStorageService} from "../../services/player/player-storage.service";
 import {Share} from "@capacitor/share";
 
 @Component({

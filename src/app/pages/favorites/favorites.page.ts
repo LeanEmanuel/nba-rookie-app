@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule, ToastController} from '@ionic/angular';
-import { PlayerStorageService } from '../../services/player-storage.service';
+import { PlayerStorageService } from '../../services/player/player-storage.service';
 import { Player } from '../../models/player';
 import { RouterModule } from '@angular/router';
 import {BottomNavBarComponent} from "../../components/bottom-nav-bar/bottom-nav-bar.component";
@@ -24,10 +24,17 @@ export class FavoritesPage implements OnInit {
     private toastController: ToastController,
   ) {}
 
+  /**
+   * Loads all favorite players when the page initializes.
+   */
   async ngOnInit() {
     this.favorites = await this.playerStorage.getFavorites();
   }
 
+  /**
+   * Removes a player from favorites and updates the view.
+   * Shows a toast and animates the star icon.
+   */
   async toggleFavorite(player: Player) {
     this.animatingId = player.id;
 
@@ -40,6 +47,9 @@ export class FavoritesPage implements OnInit {
     }, 400);
   }
 
+  /**
+   * Displays a short message at the bottom of the screen.
+   */
   async presentToast(message: string) {
     const toast = await this.toastController.create({
       message,
@@ -50,6 +60,9 @@ export class FavoritesPage implements OnInit {
     await toast.present();
   }
 
+  /**
+   * Opens the native sharing dialog with the player's information.
+   */
   async sharePlayer(player: any) {
     const canShare = await Share.canShare();
     console.log('[DEBUG] Can Share?', canShare.value);

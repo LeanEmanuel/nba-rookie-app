@@ -24,3 +24,5 @@ import {RouterLink} from "@angular/router";
     BottomNavBarComponent]
 })
 export class HomePage  {}
+// HomePage is the landing page after login.
+// Provides navigation to Player List and Favorites.

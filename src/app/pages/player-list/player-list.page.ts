@@ -10,9 +10,9 @@ import {
   IonLabel,
   IonList, IonSpinner,
 } from '@ionic/angular/standalone';
-import {ApiService} from "../../services/api.service";
+import {ApiService} from "../../services/api/api.service";
 import {Player} from "../../models/player";
-import {PlayerStateService} from '../../services/player-state.service';
+import {PlayerStateService} from '../../services/player/player-state.service';
 import {Router} from "@angular/router";
 import {TopAppBarComponent} from "../../components/top-app-bar/top-app-bar.component";
 import {BottomNavBarComponent} from "../../components/bottom-nav-bar/bottom-nav-bar.component";

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Player } from '../models/player';
+import { Player } from '../../models/player';
 import { getAuth } from 'firebase/auth';
 import {
   getFirestore,

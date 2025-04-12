@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {ToastController} from "@ionic/angular";
-import {AuthService} from "../../services/auth.service";
+import {AuthService} from "../../services/auth/auth.service";
 import {Router} from "@angular/router";
 import {firstValueFrom} from "rxjs";
 import {
