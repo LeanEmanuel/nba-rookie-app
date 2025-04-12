@@ -12,7 +12,7 @@ import {
   IonTitle,
   IonToolbar
 } from "@ionic/angular/standalone";
-import {NgClass, NgIf} from "@angular/common";
+import {NgIf} from "@angular/common";
 
 
 @Component({
@@ -36,6 +36,8 @@ export class TopAppBarComponent {
   @Input() showBackButton = true
 
   isAlertOpen = false;
+
+  // Buttons for logout confirmation alert
   alertButtons = [
     {
       text: 'Cancel',
@@ -54,12 +56,18 @@ export class TopAppBarComponent {
   ) {
   }
 
-
+  /**
+   * Called when the user confirms logout in the alert.
+   */
   async onLogoutConfirmed() {
     await this.logout();
     this.isAlertOpen = false;
   }
 
+  /**
+   * Performs logout using the AuthService and navigates to login.
+   * Shows a toast with the result.
+   */
   async logout() {
 
     console.log('[DEBUG] logout() called');
@@ -73,6 +81,9 @@ export class TopAppBarComponent {
     }
   }
 
+  /**
+   * Shows a toast message at the bottom of the screen.
+   */
   async presentToast(message: string) {
     const toast = await this.toastController.create({
       message,
@@ -83,6 +94,9 @@ export class TopAppBarComponent {
     await toast.present();
   }
 
+  /**
+   * Navigates to the photo capture page when the camera icon is clicked.
+   */
   onCameraClick() {
     console.log('Camera icon clicked');
     this.router.navigate(['/photo']);

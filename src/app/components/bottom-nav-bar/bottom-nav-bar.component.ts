@@ -16,8 +16,5 @@ import {getAuth, signOut} from "firebase/auth";
   ]
 })
 export class BottomNavBarComponent {
-  @Input() title: string = '';
-
-  constructor(private router: Router) {
-  }
+// Bottom navigation bar with links to Home, Player List, and Favorites.
 }

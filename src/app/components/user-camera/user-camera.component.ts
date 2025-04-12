@@ -13,6 +13,10 @@ import {CommonModule, NgOptimizedImage} from '@angular/common';
 export class UserCameraComponent {
   imageDataUrl: string | null = null;
 
+  /**
+   * Prompts the user to take a photo or choose one from the gallery.
+   * Saves the photo to the gallery and sets it for preview.
+   */
   async takePhoto() {
     try {
       const image = await Camera.getPhoto({
@@ -25,7 +29,7 @@ export class UserCameraComponent {
 
       this.imageDataUrl = image.webPath!;
     } catch (error) {
-      console.error('Error taking photo:', error);
+      console.error('Failed to take or choose photo:', error);
     }
   }
 }
