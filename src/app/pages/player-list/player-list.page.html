@@ -2,7 +2,12 @@
   <app-top-app-bar [title]="'Players'"></app-top-app-bar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content>
+
+  <div class="spinner-center" *ngIf="isLoading && players.length === 0">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+
   <ion-list>
     <ion-item *ngFor="let player of players" (click)="goToPlayerDetail(player)">
       <ion-label>

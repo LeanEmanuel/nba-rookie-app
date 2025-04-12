@@ -1,11 +1,52 @@
-.photo-preview {
-  margin-top: 16px;
+ion-card {
+  width: 100%;
+  max-width: 400px;
+  margin: 16px auto;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+ion-card-header {
+  padding-bottom: 0;
+}
+
+ion-card-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--color-primary);
   text-align: center;
+}
+
+ion-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+ion-button {
+  --background: var(--color-primary);
+  --border-radius: 8px;
+  font-weight: 600;
+}
+
+.photo-preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px dashed var(--color-primary);
+  border-radius: 12px;
+  padding: 12px;
+  width: 100%;
+  max-width: 300px;
+  background-color: #f8f8f8;
 
   img {
-    border-radius: 12px;
-    max-width: 100%;
+    border-radius: 8px;
+    width: 100%;
     height: auto;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
   }
 }
+

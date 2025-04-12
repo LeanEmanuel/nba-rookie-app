@@ -51,10 +51,11 @@ export class LoginPage {
       return;
     }
     const {email, password} = this.loginForm.value;
+
     this.authService.login(email!, password!).subscribe({
       next: (userCredential) => {
         console.log('Usuario logueado:', userCredential.uid);
-        this.router.navigate(['/home']);
+        this.router.navigateByUrl('/home', { replaceUrl: true });
       },
       error: (err) => {
         console.error('Error al iniciar sesión:', err.message);

@@ -50,3 +50,13 @@ body {
   background-color: var(--color-background);
   color: var(--color-text);
 }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: #121212;
+    --color-primary: #1D8AF0;     // Azul más vibrante en oscuro
+    --color-accent: #D32F2F;      // Rojo vivo
+    --color-text: #ffffff;
+    --ion-color-medium: #cccccc;
+  }
+}

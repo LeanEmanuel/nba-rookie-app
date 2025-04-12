@@ -19,7 +19,8 @@ export class UserCameraComponent {
         quality: 90,
         allowEditing: false,
         resultType: CameraResultType.Uri,
-        source: CameraSource.Prompt // Prompt: permite elegir entre cámara o galería
+        source: CameraSource.Prompt, // Prompt: permite elegir entre cámara o galería
+        saveToGallery: true
       });
 
       this.imageDataUrl = image.webPath!;
