@@ -25,7 +25,7 @@ export class AppComponent {
     this.authService.listenAuthChanges().subscribe((user) => {
       this.loading = false;
       if (user) {
-        this.router.navigate(['/player-list']);
+        this.router.navigate(['/home']);
       } else {
         this.router.navigate(['/login']);
       }

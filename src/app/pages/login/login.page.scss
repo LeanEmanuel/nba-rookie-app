@@ -1,40 +1,22 @@
-// login.page.scss y register.page.scss
-
-:host {
-  --background: #f3f4f6;
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-background);
 }
 
-.login-page,
-.register-page {
-  .login-container,
-  .register-container {
-    max-width: 400px;
-    margin: auto;
-    margin-top: 12vh;
-    padding: 2rem;
-    background-color: white;
-    border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  }
+.login-container {
+  max-width: 400px;
+  width: 100%;
+  padding: 24px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
 
-  .login-title,
-  .register-title {
-    text-align: center;
-    font-size: 1.8rem;
-    margin-bottom: 2rem;
-    color: #222;
-  }
-
-  ion-item {
-    margin-top: 1rem;
-  }
-
-  ion-button {
-    margin-top: 1.5rem;
-  }
-
-  ion-note {
-    font-size: 0.8rem;
-    margin-left: 0.5rem;
-  }
+.login-title {
+  font-size: 28px;
+  color: var(--color-primary);
+  text-align: center;
+  margin-bottom: 24px;
 }
